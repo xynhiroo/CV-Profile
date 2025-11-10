@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dek Kapten Rangga</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="treasure-map-bg"></div>
+    <div class="compass-rose" title="Putar Kompas!">
+        <i class="fas fa-compass"></i>
+    </div>
+
+    <div class="main-container">
+
+        <div class="pirate-card">
+            <div class="card-header">
+                <h2>WANTED</h2>
+                <img src="../pic/me1.jpeg" alt="Foto Profil" class="profile-img">
+            </div>
+            <div class="card-body">
+                <h3 class="profile-name">Kapten Rangga "Si Teropong Teknologi"</h3>
+                <p class="profile-title">Kutu Buku Lautan Digital</p>
+                <div class="social-links">
+                    <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="#contact" class="btn-pirate">Kirim Pesan (Perkutut)</a>
+                <a href="#" class="btn-pirate secondary">Lihat Harta Karun (Portofolio)</a>
+            </div>
+        </div>
+
+        <div class="contact-form" id="contact">
+            <h2>KIRIM PESAN DALAM BOTOL</h2>
+            <p>Tinggalkan jejakmu, dan mungkin aku akan membalasnya...</p>
+            
+            <form action="#">
+                <div class="form-group">
+                    <label for="name">Nama Bajak Lautmu:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Kapalmu:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Isi Pesanmu:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn-pirate">
+                    Lemparkan ke Laut! <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+
+    </div>
+    <script src="../JS/script.js"></script>
+</body>
+</html>

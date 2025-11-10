@@ -1,0 +1,265 @@
+/* Impor font bajak laut & font teks tua */
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&family=Merriweather:ital,wght@0,400;1,700&display=swap');
+
+:root {
+    --font-heading: 'Pirata One', cursive;
+    --font-body: 'Merriweather', serif;
+    --color-wood-dark: #6F4E37; /* Cokelat kayu gelap */
+    --color-parchment: #F5DEB3; /* Kertas tua */
+    --color-gold: #FFD700;
+    --color-accent-red: #8B0000; /* Merah darah */
+    --color-text-dark: #3a2e20;
+}
+
+body {
+    margin: 0;
+    padding: 2rem;
+    font-family: var(--font-body);
+    color: var(--color-text-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.treasure-map-bg {
+    position: fixed;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    z-index: -1;
+    background-image: url('../pic/peta.jpg');
+    background-size: cover;
+    opacity: 0.8;
+    animation: panMap 60s linear infinite alternate;
+}
+
+@keyframes panMap {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+
+
+.compass-rose {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 4rem;
+    color: rgba(0, 0, 0, 0.4);
+    z-index: 10;
+    transition: transform 0.8s ease-out, color 0.5s;
+}
+.compass-rose:hover {
+    transform: rotate(720deg) scale(1.1);
+    color: var(--color-accent-red);
+    cursor: pointer;
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Biar sejajar di atas */
+    gap: 50px;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 900px;
+}
+
+.pirate-card, .contact-form {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+.pirate-card.fade-in, .contact-form.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.pirate-card {
+    background-color: var(--color-parchment);
+    border: 10px solid var(--color-wood-dark);
+    border-radius: 8px;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.7), inset 0 0 20px rgba(0,0,0,0.2);
+    width: 350px;
+    text-align: center;
+    padding: 1.5rem;
+    position: relative;
+    /* ANIMASI MENGAMBANG */
+    animation: bobbing 5s infinite ease-in-out;
+}
+
+/* Animasi Mengambang di Air */
+@keyframes bobbing {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+}
+
+.pirate-card .card-header h2 {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    color: var(--color-accent-red);
+    margin: 0 0 1rem 0;
+    text-shadow: 1px 1px #000;
+}
+
+.pirate-card .profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 6px solid var(--color-gold);
+    box-shadow: 0 0 15px var(--color-gold), 0 0 20px var(--color-wood-dark);
+    object-fit: cover;
+    margin-bottom: 1rem;
+    filter: sepia(0.3); /* Efek foto tua */
+}
+
+.pirate-card .profile-name {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--color-text-dark);
+    margin: 0;
+}
+
+.pirate-card .profile-title {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--color-text-dark);
+    margin-bottom: 1.5rem;
+}
+
+.social-links a {
+    color: var(--color-wood-dark);
+    font-size: 1.8rem;
+    margin: 0 12px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--color-accent-red);
+    transform: scale(1.2) rotate(10deg);
+}
+
+.card-footer {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-form {
+    background-color: var(--color-parchment);
+    border: 10px solid var(--color-wood-dark);
+    border-radius: 8px;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.7);
+    width: 400px;
+    padding: 2rem;
+    animation: bobbing 5s infinite ease-in-out 0.5s;
+}
+
+.contact-form h2 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    text-align: center;
+    color: var(--color-text-dark);
+    margin-top: 0;
+}
+.contact-form p {
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: var(--color-accent-red);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px dashed var(--color-wood-dark);
+    background-color: transparent;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--color-text-dark);
+    box-sizing: border-box;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-bottom: 2px dashed var(--color-accent-red);
+}
+
+.btn-pirate {
+    background-color: var(--color-gold);
+    color: #000;
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    border: 3px solid #DAA520;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 4px 0 #DAA520;
+    position: relative;
+}
+
+.btn-pirate:hover {
+    background-color: #ffec8a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #DAA520;
+}
+.btn-pirate:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #DAA520;
+}
+
+.btn-pirate.secondary {
+    background-color: var(--color-wood-dark);
+    color: var(--color-parchment);
+    border-color: #533a2a;
+    box-shadow: 0 4px 0 #533a2a;
+}
+.btn-pirate.secondary:hover {
+    background-color: #8a644f;
+    box-shadow: 0 6px 0 #533a2a;
+}
+.btn-pirate.secondary:active {
+    box-shadow: 0 2px 0 #533a2a;
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        gap: 30px;
+    }
+    .pirate-card, .contact-form {
+        width: 90%;
+        max-width: 400px;
+        animation: none;
+    }
+    .compass-rose {
+        font-size: 3rem;
+        opacity: 0.3;
+    }
+}
