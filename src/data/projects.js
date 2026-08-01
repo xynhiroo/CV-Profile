@@ -1,0 +1,118 @@
+// src/data/projects.js — Single source of truth untuk semua proyek
+
+export const projects = [
+  {
+    id: 'cosrent',
+    slug: 'cosrent',
+    title: 'CosRent',
+    subtitle: 'Sistem Rental Cosplay Online',
+    description:
+      'Platform rental kostum cosplay berbasis web yang memungkinkan pengguna menyewa dan menyewakan kostum cosplay. Dikembangkan sebagai proyek PBL (Project-Based Learning) kelompok dengan fitur manajemen inventaris, booking, dan pembayaran.',
+    stack: ['Laravel', 'MySQL', 'Tailwind CSS', 'PHP'],
+    category: 'Web App',
+    role: 'Full-Stack Developer (Backend Lead)',
+    status: 'Completed',
+    featured: true,
+    githubUrl: 'https://github.com/xynhiroo',
+    demoUrl: null,
+    thumbnail: null, // '/images/cosrent-thumb.webp'
+    images: [],
+    highlights: [
+      'Sistem manajemen inventaris kostum',
+      'Booking & kalender ketersediaan',
+      'Panel admin untuk pengelola',
+      'Proyek PBL tim 5 orang',
+    ],
+  },
+  {
+    id: 'meeting-room',
+    slug: 'meeting-room-portal',
+    title: 'Meeting Room Portal',
+    subtitle: 'Sistem Pemesanan Ruang Rapat',
+    description:
+      'Aplikasi web untuk pemesanan dan manajemen ruang rapat, memudahkan koordinasi jadwal antar tim atau departemen. Dibangun secara kolaboratif dalam lingkungan tim.',
+    stack: ['Laravel', 'MySQL', 'Tailwind CSS', 'PHP'],
+    category: 'Web App',
+    role: 'Backend Developer',
+    status: 'Completed',
+    featured: true,
+    githubUrl: 'https://github.com/xynhiroo',
+    demoUrl: null,
+    thumbnail: null,
+    images: [],
+    highlights: [
+      'Kalender booking real-time',
+      'Notifikasi & reminder',
+      'Manajemen ruangan & kapasitas',
+    ],
+  },
+  {
+    id: 'ietecs-photobooth',
+    slug: 'ietecs-photobooth',
+    title: 'IETECS Photobooth App',
+    subtitle: 'Aplikasi Photobooth Event IETECS',
+    description:
+      'Aplikasi photobooth interaktif yang dibuat untuk event IETECS. Pengguna bisa mengambil foto dengan frame/filter khusus event, lalu menyimpan atau berbagi hasilnya.',
+    stack: ['JavaScript', 'HTML', 'CSS', 'Canvas API'],
+    category: 'Event App',
+    role: 'Frontend Developer',
+    status: 'Completed',
+    featured: true,
+    githubUrl: 'https://github.com/xynhiroo',
+    demoUrl: null,
+    thumbnail: null,
+    images: [],
+    highlights: [
+      'Frame & filter foto custom event',
+      'Capture via webcam browser',
+      'Download hasil foto langsung',
+    ],
+  },
+  {
+    id: 'music-galaxy',
+    slug: 'music-galaxy-player',
+    title: 'Music Galaxy Player',
+    subtitle: 'Music Player dengan Visual Galaxy',
+    description:
+      'Pemutar musik web dengan visualisasi audio berbentuk galaxy/bintang yang bergerak mengikuti irama lagu. Dibuat sebagai eksplorasi Web Audio API dan animasi Canvas.',
+    stack: ['JavaScript', 'Web Audio API', 'Canvas API', 'HTML', 'CSS'],
+    category: 'Creative / Side Project',
+    role: 'Solo Developer',
+    status: 'Completed',
+    featured: false,
+    githubUrl: 'https://github.com/xynhiroo',
+    demoUrl: null,
+    thumbnail: null,
+    images: [],
+    highlights: [
+      'Visualisasi audio real-time galaxy',
+      'Playlist & kontrol playback',
+      'Canvas API animation',
+    ],
+  },
+  {
+    id: 'portfolio-v2',
+    slug: 'portfolio-v2',
+    title: 'Portfolio v2',
+    subtitle: 'Website Portofolio Ini Sendiri',
+    description:
+      'Overhaul total dari portfolio vanilla HTML/CSS/JS ke React + Vite + Tailwind + GSAP + Lenis. Tema pirate modern "Kapten Rangga" dengan animasi scroll, kompas interaktif, dan dark mode berbasis parchment/gold palette.',
+    stack: ['React', 'Vite', 'Tailwind CSS', 'GSAP', 'Lenis'],
+    category: 'Portfolio',
+    role: 'Solo Developer',
+    status: 'In Progress',
+    featured: false,
+    githubUrl: 'https://github.com/xynhiroo/CV-Profile',
+    demoUrl: null,
+    thumbnail: null,
+    images: [],
+    highlights: [
+      'GSAP ScrollTrigger animations',
+      'Lenis smooth scroll',
+      'Responsive pirate modern theme',
+      'Web3Forms contact form',
+    ],
+  },
+];
+
+export default projects;
