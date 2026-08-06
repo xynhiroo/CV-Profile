@@ -8,6 +8,7 @@ const navLinks = [
   { label: 'Keahlian', href: '#skills' },
   { label: 'Harta Karun', href: '#projects' },
   { label: 'Perjalanan', href: '#timeline' },
+  { label: 'Piagam', href: '#certifications' },
   { label: 'Kontak', href: '#contact' },
 ];
 

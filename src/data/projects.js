@@ -7,10 +7,10 @@ export const projects = [
     title: 'CosRent',
     subtitle: 'Sistem Rental Cosplay Online',
     description:
-      'Platform rental kostum cosplay berbasis web yang memungkinkan pengguna menyewa dan menyewakan kostum cosplay. Dikembangkan sebagai proyek PBL (Project-Based Learning) kelompok dengan fitur manajemen inventaris, booking, dan pembayaran.',
+      'Platform rental kostum cosplay berbasis web yang memungkinkan pengguna menyewa dan menyewakan kostum cosplay. Dikembangkan sebagai proyek PBL (Project-Based Learning) kelompok. Fokus kontribusiku ada di sistem autentikasi/otorisasi akun serta penanganan concurrency saat banyak pengguna memesan kostum yang sama secara bersamaan.',
     stack: ['Laravel', 'MySQL', 'Tailwind CSS', 'PHP'],
     category: 'Web App',
-    role: 'Full-Stack Developer (Backend Lead)',
+    role: 'Backend Developer — Authentication, Authorization & Core Logic',
     status: 'Completed',
     featured: true,
     githubUrl: 'https://github.com/xynhiroo',
@@ -18,9 +18,10 @@ export const projects = [
     thumbnail: null, // '/images/cosrent-thumb.webp'
     images: [],
     highlights: [
-      'Sistem manajemen inventaris kostum',
-      'Booking & kalender ketersediaan',
-      'Panel admin untuk pengelola',
+      'Membangun sistem autentikasi & otorisasi akun (role-based access) dari awal',
+      'Mengembangkan modul forum komunikasi dalam platform secara end-to-end',
+      'Berkontribusi pada dynamic availability & pessimistic locking (lockForUpdate) untuk mencegah race condition saat stok kostum dipesan bersamaan',
+      'Merancang middleware dan struktur routing aplikasi',
       'Proyek PBL tim 5 orang',
     ],
   },

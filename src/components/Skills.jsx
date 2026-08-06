@@ -13,7 +13,6 @@ import skillCategories from '../data/skills';
 gsap.registerPlugin(ScrollTrigger);
 
 // Peta nama icon ke komponen react-icons dengan warna brand resmi
-// Fallback: <Code2 /> dari lucide jika nama tidak dikenali
 const SKILL_ICON_MAP = {
   laravel:    { Icon: SiLaravel,     color: '#FF2D20' },
   php:        { Icon: SiPhp,         color: '#8892BF' },
@@ -37,53 +36,42 @@ const categoryColors = {
     border: 'border-[#0D9488]/30',
     bg: 'bg-[#0D9488]/10',
     text: 'text-[#0D9488]',
-    bar: 'bg-[#0D9488]',
     badge: 'bg-[#0D9488]/15 text-[#14B8A6] border-[#0D9488]/30',
+    chipHover: 'hover:border-[#0D9488]/60 hover:bg-[#0D9488]/5',
   },
   gold: {
     border: 'border-[#D4A017]/30',
     bg: 'bg-[#D4A017]/10',
     text: 'text-[#D4A017]',
-    bar: 'bg-[#D4A017]',
     badge: 'bg-[#D4A017]/15 text-[#FFD700] border-[#D4A017]/30',
+    chipHover: 'hover:border-[#D4A017]/60 hover:bg-[#D4A017]/5',
   },
   wood: {
     border: 'border-[#6F4E37]/50',
     bg: 'bg-[#6F4E37]/10',
     text: 'text-[#8B6347]',
-    bar: 'bg-[#6F4E37]',
     badge: 'bg-[#6F4E37]/20 text-[#F5DEB3] border-[#6F4E37]/40',
+    chipHover: 'hover:border-[#6F4E37]/80 hover:bg-[#6F4E37]/10',
   },
 };
 
-function SkillBar({ name, icon, level, barColor }) {
+function SkillChip({ name, icon, chipHoverClass }) {
   const entry = SKILL_ICON_MAP[icon];
 
   return (
-    <div className="group">
-      <div className="flex items-center justify-between mb-1.5">
-        <div className="flex items-center gap-2">
-          {/* Brand icon dari react-icons, atau fallback lucide Code2 */}
-          {entry ? (
-            <entry.Icon
-              size={20}
-              color={entry.color}
-              aria-hidden="true"
-              style={{ flexShrink: 0 }}
-            />
-          ) : (
-            <Code2 size={18} className="text-[#F5DEB3]/50 shrink-0" aria-hidden="true" />
-          )}
-          <span className="text-sm font-medium text-[#F5DEB3]">{name}</span>
-        </div>
-        <span className="text-xs text-[#6B5240] font-mono">{level}%</span>
+    <div className={`flex items-center gap-3 p-3 rounded-lg border border-[#3D2B1A] bg-[#1E1208]/90 transition-all duration-200 ${chipHoverClass} group cursor-default`}>
+      <div className="p-2 rounded-md bg-[#160E08] border border-[#3D2B1A] shrink-0 group-hover:scale-110 transition-transform duration-200">
+        {entry ? (
+          <entry.Icon
+            size={20}
+            color={entry.color}
+            aria-hidden="true"
+          />
+        ) : (
+          <Code2 size={20} className="text-[#F5DEB3]/50" aria-hidden="true" />
+        )}
       </div>
-      <div className="h-1.5 bg-[#3D2B1A] rounded-full overflow-hidden">
-        <div
-          className={`h-full rounded-full transition-all duration-700 ${barColor}`}
-          style={{ width: `${level}%` }}
-        />
-      </div>
+      <span className="text-sm font-medium text-[#F5DEB3] group-hover:text-white transition-colors">{name}</span>
     </div>
   );
 }
@@ -136,37 +124,38 @@ export default function Skills() {
             return (
               <div
                 key={category.id}
-                className={`p-6 rounded-xl border ${colors.border} bg-[#160E08] flex flex-col gap-5`}
+                className={`p-6 rounded-xl border ${colors.border} bg-[#160E08] flex flex-col justify-between gap-5`}
               >
-                {/* Card Header */}
-                <div className="flex items-center justify-between">
-                  <div>
-                    <span className={`text-xs font-semibold uppercase tracking-widest ${colors.text}`}>
-                      {category.label}
+                {/* Card Header & Skills */}
+                <div className="flex flex-col gap-5">
+                  <div className="flex items-center justify-between border-b border-[#3D2B1A] pb-4">
+                    <div>
+                      <span className={`text-xs font-semibold uppercase tracking-widest ${colors.text}`}>
+                        {category.label}
+                      </span>
+                      <h3 className="font-pirate text-lg text-[#F5DEB3] mt-0.5">{category.title}</h3>
+                    </div>
+                    <span className={`text-xl px-2.5 py-1.5 rounded-lg ${colors.bg}`} aria-hidden="true">
+                      {category.icon}
                     </span>
-                    <h3 className="font-pirate text-lg text-[#F5DEB3] mt-0.5">{category.title}</h3>
                   </div>
-                  <span className={`text-xl px-2 py-1 rounded-lg ${colors.bg}`} aria-hidden="true">
-                    {category.icon}
-                  </span>
-                </div>
 
-                {/* Skill Bars */}
-                <div className="flex flex-col gap-4">
-                  {category.skills.map((skill) => (
-                    <SkillBar
-                      key={skill.name}
-                      name={skill.name}
-                      icon={skill.icon}
-                      level={skill.level}
-                      barColor={colors.bar}
-                    />
-                  ))}
+                  {/* Skill Badges / Chips */}
+                  <div className="flex flex-col gap-2.5">
+                    {category.skills.map((skill) => (
+                      <SkillChip
+                        key={skill.name}
+                        name={skill.name}
+                        icon={skill.icon}
+                        chipHoverClass={colors.chipHover}
+                      />
+                    ))}
+                  </div>
                 </div>
 
                 {/* Category badge */}
                 <div className="pt-3 border-t border-[#3D2B1A]">
-                  <span className={`text-xs px-2 py-1 rounded border ${colors.badge}`}>
+                  <span className={`text-xs px-2.5 py-1 rounded border ${colors.badge} font-medium`}>
                     {category.skills.length} skills
                   </span>
                 </div>

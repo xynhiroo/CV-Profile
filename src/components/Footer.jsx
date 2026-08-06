@@ -6,6 +6,7 @@ const quickLinks = [
   { label: 'Keahlian', href: '#skills' },
   { label: 'Harta Karun', href: '#projects' },
   { label: 'Peta Perjalanan', href: '#timeline' },
+  { label: 'Piagam Kapten', href: '#certifications' },
   { label: 'Kontak', href: '#contact' },
 ];
 
