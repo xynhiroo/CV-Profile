@@ -1,27 +1,35 @@
 import { useEffect, useRef } from 'react';
+import { Code2 } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import {
+  SiLaravel, SiPhp, SiMysql, SiPython,
+  SiTailwindcss, SiJavascript, SiTypescript, SiReact,
+  SiHtml5, SiGit, SiGithub, SiLinux, SiFigma, SiPostman,
+} from 'react-icons/si';
+import { DiJava } from 'react-icons/di';
 import skillCategories from '../data/skills';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Skill icons sebagai SVG inline / emoji fallback
-// Di Fase berikutnya bisa diganti dengan react-icons/devicons
-const skillIcons = {
-  laravel:    { emoji: '🔴', color: '#FF2D20' },
-  php:        { emoji: '🐘', color: '#8892BF' },
-  mysql:      { emoji: '🐬', color: '#4479A1' },
-  python:     { emoji: '🐍', color: '#3776AB' },
-  java:       { emoji: '☕', color: '#ED8B00' },
-  tailwind:   { emoji: '🌊', color: '#06B6D4' },
-  javascript: { emoji: '⚡', color: '#F7DF1E' },
-  typescript: { emoji: '📘', color: '#3178C6' },
-  react:      { emoji: '⚛️', color: '#61DAFB' },
-  html:       { emoji: '🌐', color: '#E34F26' },
-  git:        { emoji: '🌿', color: '#F05032' },
-  linux:      { emoji: '🐧', color: '#FCC624' },
-  figma:      { emoji: '🎨', color: '#F24E1E' },
-  postman:    { emoji: '📮', color: '#FF6C37' },
+// Peta nama icon ke komponen react-icons dengan warna brand resmi
+// Fallback: <Code2 /> dari lucide jika nama tidak dikenali
+const SKILL_ICON_MAP = {
+  laravel:    { Icon: SiLaravel,     color: '#FF2D20' },
+  php:        { Icon: SiPhp,         color: '#8892BF' },
+  mysql:      { Icon: SiMysql,       color: '#4479A1' },
+  python:     { Icon: SiPython,      color: '#3776AB' },
+  java:       { Icon: DiJava,        color: '#ED8B00' },
+  tailwind:   { Icon: SiTailwindcss, color: '#06B6D4' },
+  javascript: { Icon: SiJavascript,  color: '#F7DF1E' },
+  typescript: { Icon: SiTypescript,  color: '#3178C6' },
+  react:      { Icon: SiReact,       color: '#61DAFB' },
+  html:       { Icon: SiHtml5,       color: '#E34F26' },
+  git:        { Icon: SiGit,         color: '#F05032' },
+  github:     { Icon: SiGithub,      color: '#F5DEB3' },
+  linux:      { Icon: SiLinux,       color: '#FCC624' },
+  figma:      { Icon: SiFigma,       color: '#F24E1E' },
+  postman:    { Icon: SiPostman,     color: '#FF6C37' },
 };
 
 const categoryColors = {
@@ -49,12 +57,23 @@ const categoryColors = {
 };
 
 function SkillBar({ name, icon, level, barColor }) {
-  const { emoji, color } = skillIcons[icon] || { emoji: '🔧', color: '#F5DEB3' };
+  const entry = SKILL_ICON_MAP[icon];
+
   return (
     <div className="group">
       <div className="flex items-center justify-between mb-1.5">
         <div className="flex items-center gap-2">
-          <span className="text-lg leading-none">{emoji}</span>
+          {/* Brand icon dari react-icons, atau fallback lucide Code2 */}
+          {entry ? (
+            <entry.Icon
+              size={20}
+              color={entry.color}
+              aria-hidden="true"
+              style={{ flexShrink: 0 }}
+            />
+          ) : (
+            <Code2 size={18} className="text-[#F5DEB3]/50 shrink-0" aria-hidden="true" />
+          )}
           <span className="text-sm font-medium text-[#F5DEB3]">{name}</span>
         </div>
         <span className="text-xs text-[#6B5240] font-mono">{level}%</span>
@@ -117,19 +136,22 @@ export default function Skills() {
             return (
               <div
                 key={category.id}
-                className={`relative rounded-xl border ${colors.border} bg-[#160E08] p-6 hover:shadow-lg hover:shadow-black/40 transition-shadow duration-300`}
+                className={`p-6 rounded-xl border ${colors.border} bg-[#160E08] flex flex-col gap-5`}
               >
-                {/* Category header */}
-                <div className="flex items-center gap-2 mb-6">
-                  <div className={`w-8 h-8 rounded-lg ${colors.bg} flex items-center justify-center`}>
-                    <span className={`text-xs font-bold uppercase tracking-wider ${colors.text}`}>
-                      {category.label.slice(0, 2)}
+                {/* Card Header */}
+                <div className="flex items-center justify-between">
+                  <div>
+                    <span className={`text-xs font-semibold uppercase tracking-widest ${colors.text}`}>
+                      {category.label}
                     </span>
+                    <h3 className="font-pirate text-lg text-[#F5DEB3] mt-0.5">{category.title}</h3>
                   </div>
-                  <h3 className={`font-pirate text-lg ${colors.text}`}>{category.label}</h3>
+                  <span className={`text-xl px-2 py-1 rounded-lg ${colors.bg}`} aria-hidden="true">
+                    {category.icon}
+                  </span>
                 </div>
 
-                {/* Skills list */}
+                {/* Skill Bars */}
                 <div className="flex flex-col gap-4">
                   {category.skills.map((skill) => (
                     <SkillBar
@@ -142,9 +164,11 @@ export default function Skills() {
                   ))}
                 </div>
 
-                {/* Corner badge */}
-                <div className={`absolute top-3 right-3 px-2 py-0.5 rounded text-[10px] font-medium border ${colors.badge}`}>
-                  {category.skills.length} skills
+                {/* Category badge */}
+                <div className="pt-3 border-t border-[#3D2B1A]">
+                  <span className={`text-xs px-2 py-1 rounded border ${colors.badge}`}>
+                    {category.skills.length} skills
+                  </span>
                 </div>
               </div>
             );
