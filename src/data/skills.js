@@ -4,6 +4,8 @@ export const skillCategories = [
   {
     id: 'backend',
     label: 'Backend',
+    title: 'Server & Database',
+    icon: '⚓',
     color: 'teal',
     skills: [
       { name: 'Laravel', icon: 'laravel', level: 90 },
@@ -16,6 +18,8 @@ export const skillCategories = [
   {
     id: 'frontend',
     label: 'Frontend',
+    title: 'UI & Interaksi',
+    icon: '🗺️',
     color: 'gold',
     skills: [
       { name: 'Tailwind CSS', icon: 'tailwind', level: 90 },
@@ -28,6 +32,8 @@ export const skillCategories = [
   {
     id: 'tools',
     label: 'Tools & Others',
+    title: 'Peralatan Kapal',
+    icon: '🔧',
     color: 'wood',
     skills: [
       { name: 'Git & GitHub', icon: 'git', level: 82 },

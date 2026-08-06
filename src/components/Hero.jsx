@@ -101,10 +101,10 @@ export default function Hero() {
       ref={heroRef}
       className="relative min-h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden"
     >
-      {/* Background — peta.jpg dengan sepia dark filter */}
+      {/* Background — peta.webp dengan sepia dark filter */}
       <div className="absolute inset-0 z-0"
         style={{
-          backgroundImage: `url('/images/peta.jpg')`,
+          backgroundImage: `url('/images/peta.webp')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           filter: 'sepia(0.7) brightness(0.15) saturate(0.8)',
